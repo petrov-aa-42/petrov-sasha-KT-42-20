@@ -6,6 +6,8 @@ using System.Net;
 using petrovsanyaKT_42_20.ServiceInterfaces;
 using Microsoft.AspNetCore.Diagnostics;
 
+//using petrovsanyaKT_42_20.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 
@@ -33,7 +35,7 @@ try
         app.UseSwaggerUI();
     }
 
-    
+   
     app.UseAuthorization();
     app.MapControllers();
     app.Run();

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using petrovsanyaKT_42_20.Database;
 
@@ -10,9 +11,11 @@ using petrovsanyaKT_42_20.Database;
 namespace petrovsanyaKT_42_20.Migrations
 {
     [DbContext(typeof(PrepodDbContext))]
-    partial class PrepodDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231123184646_migr")]
+    partial class migr
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

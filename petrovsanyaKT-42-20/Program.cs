@@ -1,8 +1,10 @@
 using NLog.Web;
 using NLog;
+using petrovsanyaKT_42_20.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using petrovsanyaKT_42_20.Database;
+using petrovsanyaKT_42_20.ServiceInterfaces;
+using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -21,13 +23,17 @@ try
     builder.Services.AddDbContext<PrepodDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+    builder.Services.AddServices();
     var app = builder.Build();
+
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    
     app.UseAuthorization();
     app.MapControllers();
     app.Run();
@@ -40,4 +46,3 @@ finally
 {
     LogManager.Shutdown();
 }
-

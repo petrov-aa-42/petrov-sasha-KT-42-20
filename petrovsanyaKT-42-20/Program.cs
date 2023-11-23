@@ -4,7 +4,7 @@ using petrovsanyaKT_42_20.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 using petrovsanyaKT_42_20.ServiceInterfaces;
-using Microsoft.AspNetCore.Diagnostics;
+using petrovsanyaKT_42_20.Middlewares;
 
 //using petrovsanyaKT_42_20.Middleware;
 
@@ -35,7 +35,7 @@ try
         app.UseSwaggerUI();
     }
 
-   
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
     app.UseAuthorization();
     app.MapControllers();
     app.Run();
